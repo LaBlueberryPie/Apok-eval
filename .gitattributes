@@ -1,0 +1,16 @@
+# Text files are stored and checked out with LF line endings on every platform.
+* text=auto eol=lf
+
+# Binary formats: never normalised, diffed or merged as text. The tests build their fixtures on the fly;
+# these patterns keep any binary file added later byte for byte as written.
+*.tif   binary
+*.tiff  binary
+*.npy   binary
+*.npz   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.pdf   binary
+*.gz    binary
+*.zip   binary
+*.zst   binary

@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.venv/
+# Runs written by `apok-eval e7v3` without --out
+apok-eval-runs/
+# The release guard's figure list and its allow-list are private: never committed (release/README.md).
+release/figure_hashes.json
+release/figure_allowlist.txt

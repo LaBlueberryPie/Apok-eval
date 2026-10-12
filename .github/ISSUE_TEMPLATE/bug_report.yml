@@ -1,0 +1,91 @@
+name: Bug report
+description: Something in apok-eval does not behave as its documentation says.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a problem.
+
+        - **Security vulnerabilities** are reported privately, never in an issue: see [SECURITY.md](https://github.com/LaBlueberryPie/apok-eval/blob/main/SECURITY.md).
+        - **Do not attach scroll data, results computed on scroll data, or personal data.** A sealed record names
+          the local paths it read and, with the licence gate on, the person who accepted the data terms: do not
+          paste one from a run on scroll data. Reproduce the problem on synthetic data wherever you can
+          (`apok-eval demo --keep DIR` writes a synthetic scroll you can run every command on).
+
+  - type: input
+    id: version
+    attributes:
+      label: apok-eval version
+      description: The output of `apok-eval --version`, or the commit you installed from.
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Python and operating system
+      description: The output of `python --version`, and your operating system and its version.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Evaluator (e7v3, demo)
+        - CT positive control
+        - Readers (tifxyz, OME-Zarr, umbilicus, meshes, point collections, fibre traces)
+        - Run ledger (records, verify, index)
+        - Licence gate (registry, licence-check)
+        - Command line
+        - Documentation
+        - Packaging or installation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did and what apok-eval did. If it refused, paste the refusal (its code, reason and details).
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What you expected instead, and where the documentation says so, if it does.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: The smallest set of commands or code that shows the problem, on synthetic data.
+      placeholder: |
+        apok-eval demo --keep /tmp/demo
+        apok-eval ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: The full output of the failing command. It is formatted as code automatically.
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have searched the existing issues for this problem.
+          required: true
+        - label: This report contains no scroll data, no result computed on scroll data and no personal data.
+          required: true

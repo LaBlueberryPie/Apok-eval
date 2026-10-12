@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+type: software
+title: apok-eval
+abstract: >-
+  apok-eval is a verification-first evaluator of spiral fits for the Vesuvius Challenge. It scores a spiral
+  fit, a set of tifxyz winding surfaces, against human fibre traces the fit did not use (E7 v3): per-family
+  offsets are calibrated on one half of the fibres and the other half is scored against z-offset and rotation
+  nulls. A CT positive control first checks that the fibres lie on the scan's papyrus layers, a ceiling reports
+  the score a perfect fit could reach with the same fibres, and an optional leakage audit scores the fibre
+  points away from the fit's own inputs. Every run is sealed in a record of every byte read, every setting and
+  the code's identity, which anyone can re-check, and an optional licence gate refuses to read any input that
+  is not declared with a licence whose required terms the user has accepted. The repository contains no scroll
+  data and no results on scroll data.
+authors:
+  - name: Static Signal Ltd
+version: 0.1.0
+date-released: "2026-10-12"
+license: MIT
+repository-code: "https://github.com/LaBlueberryPie/apok-eval"
+url: "https://github.com/LaBlueberryPie/apok-eval"
+keywords:
+  - Vesuvius Challenge
+  - Herculaneum papyri
+  - virtual unwrapping
+  - spiral fitting
+  - evaluation
+  - computed tomography
+  - OME-Zarr
+  - tifxyz
+  - reproducibility
+  - provenance

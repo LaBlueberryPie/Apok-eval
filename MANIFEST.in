@@ -1,0 +1,3 @@
+# The sdist carries what builds and installs the package. The tests are left out: they need the rest of the
+# repository (release/figures.py, and a git checkout for the release guards), so run them from a clone.
+prune tests

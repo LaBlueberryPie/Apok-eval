@@ -1,0 +1,48 @@
+name: Feature request
+description: Suggest a change or an addition to apok-eval.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for the suggestion. apok-eval deliberately ships the evaluator, the readers it needs, the run
+        ledger and the licence gate, and nothing else, and every guard refuses rather than guesses. A proposal
+        that fits that scope, or that makes a check stricter or a record easier to verify, is the easiest to take on.
+
+        Please do not include scroll data, results computed on scroll data, or personal data.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do, and what stops you today?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: The proposal
+      description: What should apok-eval do? For a new check or reader, say what it should refuse and how it would be tested on synthetic data.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other ways to solve the problem, including a workaround you use now.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Links to the formats, conventions or documentation involved (for example, the villa source a reader should follow).
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have searched the existing issues for this suggestion.
+          required: true

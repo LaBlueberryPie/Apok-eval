@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/LaBlueberryPie/apok-eval/blob/main/SECURITY.md
+    about: Please report vulnerabilities privately, as SECURITY.md describes, and not in a public issue.
+  - name: Scroll data, its licences and terms
+    url: https://scrollprize.org
+    about: Questions about the Vesuvius Challenge data and the terms that bind its use are for the Vesuvius Challenge.

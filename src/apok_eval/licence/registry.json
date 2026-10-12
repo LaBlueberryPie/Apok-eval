@@ -1,0 +1,114 @@
+{
+ "schema": "apok-asset-registry-v1",
+ "note": "The registry shipped with apok-eval: generic licences, terms and hosts for Vesuvius Challenge data, and one synthetic asset for the tests (the demo declares its own directory in a run-local copy). It declares no scroll data: declare your own inputs in a copy of this file (docs/licence.md, \"Declaring your data\") and pass it with --registry. This file never records anyone's acceptance of terms: an acceptance lives in a run configuration, in the words of the person who accepted. Citations are to ScrollPrize/villa at e0bbb8b unless stated.",
+ "licences": {
+  "CC-BY-NC-4.0": {
+   "name": "Creative Commons Attribution-NonCommercial 4.0 International",
+   "url": "https://creativecommons.org/licenses/by-nc/4.0/legalcode.txt",
+   "requires_terms": [
+    "VESUVIUS-DATA-TERMS"
+   ],
+   "publication": "ask",
+   "commercial_use": false,
+   "shippable_in_pipeline": false,
+   "obligations": [
+    "Attribute the source and cite the dataset that corresponds to the scans used (scrollprize.org/docs/02_data.md:56).",
+    "Non-commercial use only: nothing trained or calibrated on this data enters a paid product.",
+    "Publishing anything derived from the data is a decision for the person who accepted the data terms, under those terms; the gate cannot make it."
+   ],
+   "evidence": "vesuvius/src/vesuvius/install/accept_terms.py:55 (all Vesuvius Challenge datasets are CC BY-NC 4.0 except Scrolls 1-4 and Fragments 1-6); scrollprize.org/docs/02_data.md:143-145. requires_terms is this registry's policy: vesuvius.accept_terms records nothing a tool can read (accept_terms.py:41-48), so the acceptance must be recorded in the run configuration."
+  },
+  "EDUCELAB-SCROLLS": {
+   "name": "EduceLab-Scrolls / Vesuvius Challenge data-server licence",
+   "url": "https://dl.ash2txt.org/LICENSE.txt",
+   "requires_terms": [
+    "DATA-SERVER-LICENSE"
+   ],
+   "publication": "forbidden",
+   "commercial_use": false,
+   "shippable_in_pipeline": false,
+   "obligations": [
+    "Do not redistribute the data without the written approval of Vesuvius Challenge.",
+    "Do not make public (outside the official Vesuvius Challenge Discord) any revelation of hidden text or associated code without written approval.",
+    "In any published abstract, cite \"EduceLab-Scrolls\" as the source of the data.",
+    "In any published manuscript, reference Parsons, Parker, Chapman, Hayashida & Seales (2023), EduceLab-Scrolls: Verifiable Recovery of Text from Herculaneum Papyri using X-ray CT, arXiv:2304.02084, and acknowledge the dataset in the methods section.",
+    "Every team member accepts the terms individually."
+   ],
+   "evidence": "vesuvius/src/vesuvius/install/accept_terms.py:55-69 (EduceLab-Scrolls terms for Scrolls 1-4 and Fragments 1-6); scrollprize.org/docs/02_data.md:54,146; the data-server licence https://dl.ash2txt.org/LICENSE.txt. publication 'forbidden' is this registry's conservative reading: nothing derived is published without written approval."
+  },
+  "MIT": {
+   "name": "MIT License",
+   "url": "https://opensource.org/license/mit",
+   "requires_terms": [],
+   "publication": "allowed",
+   "commercial_use": true,
+   "shippable_in_pipeline": true,
+   "obligations": [
+    "Keep the copyright notice and the permission notice in all copies or substantial portions."
+   ],
+   "evidence": "apok-eval's own licence (LICENSE; pyproject.toml license = \"MIT\")."
+  }
+ },
+ "terms": {
+  "VESUVIUS-DATA-TERMS": {
+   "title": "Vesuvius Challenge data terms as printed by vesuvius.accept_terms (CC BY-NC 4.0; EduceLab-Scrolls terms for Scrolls 1-4 and Fragments 1-6)",
+   "url": "https://github.com/ScrollPrize/villa/blob/e0bbb8b/vesuvius/src/vesuvius/install/accept_terms.py",
+   "per_person": true,
+   "text_sha256": "sha256:9f7ce6e4621d7add76c11f3428ee61fda94c6ecce833a324441dbe1711b940b2",
+   "evidence": "vesuvius/src/vesuvius/install/accept_terms.py:52-70 (the text; line 59: 'if I am working in a team, every team member will sign this form separately'). vesuvius.accept_terms --yes only writes 'yes' to a package-local agreement.txt that nothing reads (accept_terms.py:41-48): it is not evidence of acceptance. Pinned: the sha256 of the bytes of the whole file accept_terms.py at villa e0bbb8b."
+  },
+  "DATA-SERVER-LICENSE": {
+   "title": "Vesuvius Challenge data-server licence (https://dl.ash2txt.org/LICENSE.txt)",
+   "url": "https://dl.ash2txt.org/LICENSE.txt",
+   "per_person": true,
+   "text_sha256": "sha256:9dc08a92194617d4ae68fb96d4fd0da99d1c7207f821f2a3750b0034eac8d154",
+   "evidence": "The licence served at https://dl.ash2txt.org/LICENSE.txt: 'If I am working in a team, every member will agree to these terms individually.' Pinned: the sha256 of the bytes of LICENSE.txt as served with Last-Modified 2025-05-12. If the server's text changes, the pin no longer matches and an acceptance of the new text is refused until the pin is updated."
+  }
+ },
+ "hosts": {
+  "s3://vesuvius-challenge-open-data": {
+   "allowed_licences": [
+    "CC-BY-NC-4.0",
+    "EDUCELAB-SCROLLS"
+   ],
+   "requires_terms": [],
+   "note": "The open-data bucket, us-east-1; both https spellings canonicalise here (scrollprize.org/src/data/atlasDataAccess.json:8-11; scrollprize.org/docs/02_data.md:60). Licence is per volume (the catalog keeps it at volumes[vid].properties.license); EduceLab is allowed because it is stricter."
+  },
+  "s3://vesuvius-challenge": {
+   "allowed_licences": [
+    "EDUCELAB-SCROLLS"
+   ],
+   "requires_terms": [],
+   "note": "The full-dataset bucket, served at https://data.aws.ash2txt.org/samples/ (atlasDataAccess.json:12-15). It serves the EduceLab DLS volumes (scrollprize.org/static/data_browser/index.json:223-244) and other volumes, so the whole bucket defaults to the strictest licence; declare a narrower host entry for a volume you have checked to be CC BY-NC."
+  },
+  "https://dl.ash2txt.org": {
+   "allowed_licences": [
+    "EDUCELAB-SCROLLS"
+   ],
+   "requires_terms": [
+    "DATA-SERVER-LICENSE"
+   ],
+   "note": "The data server; its terms are https://dl.ash2txt.org/LICENSE.txt, required for every input here whatever licence a narrower entry allows. It hosts the spiral-fitting input datasets (scrollprize.org/docs/38_tutorial_spiral.md:109-113) and the legacy scroll volumes (vesuvius/src/vesuvius/install/configs/scrolls.yaml)."
+  },
+  "synthetic://apok-fixtures": {
+   "allowed_licences": [
+    "MIT"
+   ],
+   "requires_terms": [],
+   "note": "Data apok-eval's own code generates; no scroll data. Generated data written to disk (the demo's, the tests') is declared in a run-local registry as file:// paths under its own root."
+  }
+ },
+ "assets": {
+  "apok-synthetic-fixtures": {
+   "kind": "synthetic",
+   "locations": [
+    "synthetic://apok-fixtures"
+   ],
+   "licence": "MIT",
+   "additional_terms": [],
+   "aliases": [],
+   "evidence": "Generated by apok-eval's own code (MIT, LICENSE); contains no scroll data.",
+   "note": "Names generated data, e.g. synthetic://apok-fixtures/spiral/seed-7. Clears without terms."
+  }
+ }
+}
